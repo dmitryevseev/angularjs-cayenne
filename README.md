@@ -79,13 +79,6 @@ Example:
 
 ## Testing
 
-We love [Testacular](http://testacular.github.com/) and to run tests execute simple command:
+We love [Karma](http://karma-runner.github.com/) and to run tests execute simple command (from tests dir):
 
-    testacular start ./test/testacular.conf.js 
-
-
-
-
-
-
-
+    karma start
