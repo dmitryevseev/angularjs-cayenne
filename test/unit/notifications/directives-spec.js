@@ -42,14 +42,11 @@ describe('notifications directives', function() {
         expect(rootScope.notifications[0].display).toEqual(true);
     });
 
-
     it('should set @display property to false if expression is false', function() {
         $compile('<notification type="error" on="$blabla == 1">Error1</notification>')(scope);
+        rootScope.$apply();
 
-        rootScope.$digest();
-
-        scope.$blabla = 0;
-        scope.$digest();
+        scope.$apply(scope.$blabla = 0);
 
         expect(rootScope.notifications[0].display).toEqual(false);
     });

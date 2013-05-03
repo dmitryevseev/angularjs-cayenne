@@ -1,11 +1,29 @@
-<div  data-ng-controller="notificationController">
-    <div class="notifications">
-        <div class="notification" ng-repeat="notification in notifications">
-            <div ng-switch on="notification.severity">
-                <div ng-switch-when="success"  ng-show="notification.display" class="notification-success">{{ notification.message }}</div>
-                <div ng-switch-when="alert"  ng-show="notification.display" class="notification-alert">{{ notification.message }}</div>
-                <div ng-switch-when="error" ng-show="notification.display" class="notification-error">{{ notification.message }}</div>
-            </div>
-        </div>
+<div class="notifications" data-ng-controller="notificationController">
+  <div class="notification" ng-repeat="notification in notifications">
+    <div data-ng-switch data-on="notification.isTemplateUrl">
+
+      <div data-ng-switch-when="true"
+          data-ng-show="notification.display"
+          data-ng-class="{'success': notification.severity === 'notification-success',
+            'alert': notification.severity === 'notification-alert',
+            'error': notification.severity === 'notification-error'}">
+
+        <a href="#" class="close"
+            data-ng-show="notification.showClose"
+            data-ng-click="hide(notification.index)">&times;</a>
+
+        <div data-ng-include="notification.templateUrl"></div>
+      </div>
+
+      <div data-ng-switch-default
+          data-ng-show="notification.display"
+          data-ng-class="{'success': notification.severity === 'notification-success',
+              'alert': notification.severity === 'notification-alert',
+              'error': notification.severity === 'notification-error'}">
+        {{ notification.message }}
+        <a href="#" class="close" data-ng-show="notification.showClose" data-ng-click="hide(notification.index)">&times;</a>
+      </div>
     </div>
+  </div>
+</div>
 </div>
