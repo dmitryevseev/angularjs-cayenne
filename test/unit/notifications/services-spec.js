@@ -1,7 +1,7 @@
 'use strict';
 
 describe('notifications services', function() {
-    var rootScope, location, subject, $compile, b;
+    var rootScope, location, subject, $compile;
 
     var mod = angular.module('notificationsMockups', []);
     mod.controller('mockupController1', function($scope, $rootScope) {
@@ -29,10 +29,6 @@ describe('notifications services', function() {
         $controller('mockupController1', {
             $scope: $rootScope.$new()
         });
-        /*$controller('mockupController2', {
-            $scope: $rootScope.$new()
-        });*/
-
     }));
 
     it('should clear all notifications after changing URL', function() {
